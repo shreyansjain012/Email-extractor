@@ -1,19 +1,23 @@
 import re, pyperclip
-#TODO: email regex
+
+#email regex
+
 emailRegex = re.compile(r'''(
 	[a-zA-Z0-9._%+-]+	#username
-	@			#@ symbol
+	@					#@ symbol
 	[a-zA-Z0-9.-]+		#domain name
 	(\.[a-zA-Z]{2,5}) 	#dot something
 	)''', re.VERBOSE)
 
-#TODO: find matches in clipboard
+#find matches in clipboard
+
 text = str(pyperclip.paste())
 matches = []
-for email in emailRegex.findall(text):
-	matches.append(email[0])
+for groups in emailRegex.findall(text):
+	matches.append(groups[0])
 
-#TODO: paste matches in clipboard
+#paste matches in clipboard
+
 if len(matches) > 0:
 	pyperclip.copy('\n'.join(matches))
 	print('\n'.join(matches))
