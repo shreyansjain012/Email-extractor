@@ -8,9 +8,15 @@ emailRegex = re.compile(r'''(
 	)''', re.VERBOSE)
 
 #TODO: find matches in clipboard
-
-
+text = str(pyperclip.paste())
+matches = []
+for email in emailRegex.findall(text):
+	matches.append(email[0])
 
 #TODO: paste matches in clipboard
-
+if len(matches) > 0:
+	pyperclip.copy('\n'.join(matches))
+	print('\n'.join(matches))
+else:
+	print('No email addresses found')
 
