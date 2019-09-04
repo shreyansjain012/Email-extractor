@@ -4,7 +4,7 @@ import re, pyperclip
 #email regex
 emailRegex = re.compile(r'''(
 	[a-zA-Z0-9._%+-]+	#username
-	@					#@ symbol
+	@			#@ symbol
 	[a-zA-Z0-9.-]+		#domain name
 	\.[a-zA-Z]{2,5} 	#dot something
 	)''', re.VERBOSE)
